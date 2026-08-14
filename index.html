@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>The Totally Normal Encyclopedia</title>
+
+
+<style>
+
+
+* {
+   box-sizing: border-box;
+}
+
+
+body {
+   margin: 0;
+   font-family: Georgia, "Times New Roman", serif;
+   background: #f4f4f4;
+   color: #222;
+}
+
+
+/* =========================
+  NORMAL ENCYCLOPEDIA PAGE
+========================= */
+
+
+#normalPage {
+   min-height: 100vh;
+}
+
+
+header {
+   background: white;
+   border-bottom: 1px solid #aaa;
+   padding: 28px 45px;
+}
+
+
+header h1 {
+   margin: 0;
+   font-size: 36px;
+}
+
+
+header p {
+   margin: 8px 0 0;
+   color: #666;
+}
+
+
+.encyclopedia {
+   max-width: 1100px;
+   margin: 35px auto;
+   padding: 0 25px;
+}
+
+
+.intro {
+   background: white;
+   border: 1px solid #aaa;
+   padding: 25px;
+   margin-bottom: 25px;
+}
+
+
+.intro h2 {
+   margin-top: 0;
+}
+
+
+.entries {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 20px;
+}
+
+
+.entry {
+   background: white;
+   border: 1px solid #aaa;
+   min-height: 190px;
+   padding: 20px;
+   transition: 0.2s;
+}
+
+
+.entry:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+.entry h3 {
+   margin-top: 0;
+   font-size: 23px;
+}
+
+
+.entry p {
+   color: #555;
+   line-height: 1.5;
+}
+
+
+/* =========================
+  SMALL YELLOW DOT
+========================= */
+
+
+#secretButton {
+   position: fixed;
+
+
+   right: 17px;
+   bottom: 17px;
+
+
+   width: 18px;
+   height: 18px;
+
+
+   border-radius: 50%;
+
+
+   border: 1px solid #b99d00;
+
+
+   background: #ffd900;
+
+
+   padding: 0;
+
+
+   cursor: pointer;
+
+
+   z-index: 99999;
+}
+
+
+#secretButton:hover {
+   transform: scale(1.15);
+}
+
+
+/* =========================
+  DUCK
+========================= */
+
+
+#duckContainer {
+   text-align: center;
+   margin-top: 30px;
+}
+
+
+#duckImage {
+   display: none;
+
+
+   width: 420px;
+   max-width: 90%;
+
+
+   margin: auto;
+
+
+   border: 1px solid #aaa;
+}
+
+
+/* =========================
+  CHAOS PAGE
+========================= */
+
+
+#chaosPage {
+  display: none;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  background-image: url("./chaos-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+
+.chaosTitle {
+   text-align: center;
+
+
+   padding-top: 45px;
+
+
+   font-family: Impact, sans-serif;
+
+
+   font-size: 75px;
+
+
+   color: yellow;
+
+
+   text-shadow:
+       6px 6px red,
+       -6px -6px blue;
+
+
+   transform: rotate(-3deg);
+}
+
+
+.chaosBox {
+   position: relative;
+
+
+   z-index: 10;
+
+
+   width: 500px;
+   max-width: 90%;
+
+
+   margin: 40px auto;
+
+
+   padding: 30px;
+
+
+   background: white;
+
+
+   border: 8px dashed black;
+
+
+   text-align: center;
+}
+
+
+.chaosBox h2 {
+   font-family: Impact, sans-serif;
+   font-size: 32px;
+}
+
+
+.chaosBox input {
+   width: 100%;
+
+
+   padding: 15px;
+
+
+   font-size: 22px;
+
+
+   border: 3px solid black;
+
+
+   outline: none;
+}
+
+
+/* =========================
+  JOHN PORK
+========================= */
+
+
+#johnPork {
+   display: none;
+
+
+   width: 100%;
+
+
+   max-width: 400px;
+
+
+   margin: 25px auto 0;
+
+
+   border: 5px solid black;
+}
+#dave {
+   display: none;
+   width: 100%;
+   max-width: 400px;
+   margin: 25px auto 0;
+   border: 5px solid black;
+}
+/* =========================
+  CHAOS OBJECTS
+========================= */
+
+
+.chaosObject {
+   position: absolute;
+
+
+   font-size: 65px;
+
+
+   animation:
+       spin 1.5s infinite linear,
+       float 2s infinite alternate;
+
+
+   pointer-events: none;
+}
+
+
+@keyframes spin {
+
+
+   from {
+       transform: rotate(0deg);
+   }
+
+
+   to {
+       transform: rotate(360deg);
+   }
+
+
+}
+
+
+@keyframes float {
+
+
+   from {
+       margin-top: -20px;
+   }
+
+
+   to {
+       margin-top: 20px;
+   }
+
+
+}
+
+
+.shake {
+   animation: shake 0.08s infinite;
+}
+
+
+@keyframes shake {
+
+
+   0% {
+       transform: translate(4px, 4px);
+   }
+
+
+   25% {
+       transform: translate(-4px, 2px);
+   }
+
+
+   50% {
+       transform: translate(2px, -4px);
+   }
+
+
+   75% {
+       transform: translate(-3px, -2px);
+   }
+
+
+   100% {
+       transform: translate(4px, 4px);
+   }
+
+
+}
+
+
+/* =========================
+  MOBILE
+========================= */
+
+
+@media (max-width: 750px) {
+
+
+   .entries {
+       grid-template-columns: 1fr;
+   }
+
+
+   .chaosTitle {
+       font-size: 45px;
+   }
+
+
+}
+
+#secretI {
+    cursor: pointer;
+}
+
+#mandm {
+    display: none;
+    position: fixed;
+    width: 360px;
+    max-width: 80vw;
+    left: 50%;
+    top: 50%;
+    z-index: 999999;
+}
+
+#mandm.pop {
+    display: block;
+    animation: mandmPop 1.5s ease-in-out forwards;
+}
+
+@keyframes mandmPop {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(90deg);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+
+
+
+
+<body>
+
+
+
+
+<!-- =====================================================
+    NORMAL PAGE
+===================================================== -->
+
+
+<div id="normalPage">
+
+
+   <header>
+
+
+       <h1>
+         
+    The Totally Normal Encycloped<span id="secretI">i</span>a
+
+       </h1>
+
+
+       <p>
+           A completely ordinary collection of information.
+       </p>
+
+
+   </header>
+
+
+
+
+   <main class="encyclopedia">
+
+
+
+
+       <div class="intro">
+
+
+           <h2>
+               Featured Subjects
+           </h2>
+
+
+           <p>
+               Welcome to the encyclopedia. Explore the subjects
+               below and discover completely normal information.
+           </p>
+
+
+       </div>
+
+
+
+
+       <div class="entries">
+
+
+
+
+           <!-- SPONGEBOB -->
+
+<div class="entry" onclick="showInfo()">
+
+    <h3>SpongeBob</h3>
+
+    <p>
+        SpongeBob SquarePants is a fictional sea sponge
+        who lives in Bikini Bottom.
+    </p>
+
+</div>
+
+<div id="infoBox" style="
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    padding:30px;
+    width:500px;
+    max-height:70vh;
+    overflow:auto;
+    border:2px solid black;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    z-index:9999;
+">
+
+    <h2>SpongeBob</h2>
+
+    <p>
+        SpongeBob SquarePants is a cheerful sea sponge who lives
+        in a pineapple in Bikini Bottom. He works at the Krusty Krab,
+        enjoys jellyfishing, and spends a lot of time with Patrick.
+        He is famous for his enormous enthusiasm and his ability
+        to turn completely normal situations into absolute chaos.
+    </p>
+
+    <p>
+        SpongeBob has many friends and neighbors, including Patrick,
+        Squidward, Sandy, and Mr. Krabs. His favorite activity is
+        usually having fun, although his adventures often become
+        much stranger than expected.
+    </p>
+
+    <button onclick="closeInfo()">Close</button>
+
+</div>
+
+
+           <!-- PIKACHU -->
+
+
+           <div class="entry" onclick="showPikachu()">
+
+  <h3>Pikachu</h3>
+
+  <p>
+    Pikachu is a famous Pokémon known for its electric abilities.
+  </p>
+
+</div>
+
+<div id="pikachuBox" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:30px;
+  width:500px;
+  max-height:70vh;
+  overflow:auto;
+  border:2px solid black;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  z-index:9999;
+">
+
+  <h2>Pikachu</h2>
+
+  <p>
+    Pikachu is an Electric-type Pokémon. It is one of the
+    most recognizable Pokémon and is known for storing
+    electricity in its cheeks.
+  </p>
+
+  <p>
+    Pikachu can use electricity during battles and is often
+    shown alongside its trainer, Ash Ketchum. Despite its
+    small size, Pikachu can be surprisingly powerful.
+  </p>
+
+  <button onclick="closePikachu()">Close</button>
+
+</div>
+
+
+           <!-- MINIONS -->
+
+
+           <div class="entry" onclick="showMinions()">
+
+  <h3>Minions</h3>
+
+  <p>
+    Minions are small yellow creatures known for their
+    strange language and chaotic behavior.
+  </p>
+
+</div>
+
+<div id="minionsBox" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:30px;
+  width:500px;
+  max-height:70vh;
+  overflow:auto;
+  border:2px solid black;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  z-index:9999;
+">
+
+  <h2>Minions</h2>
+
+  <p>
+    Minions are small yellow creatures from the Despicable Me
+    universe. They are known for their funny behavior, unusual
+    language, and loyalty to their boss.
+  </p>
+
+  <p>
+    Minions have existed for a very long time and have served
+    many different villains throughout history. They often work
+    together, although their plans do not always go exactly as
+    expected.
+  </p>
+
+  <button onclick="closeMinions()">Close</button>
+
+</div>
+
+
+           <!-- DOGS -->
+
+
+           <div class="entry" onclick="showDogs()">
+
+  <h3>Dogs</h3>
+
+  <p>
+    Dogs are loyal animals that have lived alongside humans
+    for thousands of years.
+  </p>
+
+</div>
+
+<div id="dogsBox" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:30px;
+  width:500px;
+  max-height:70vh;
+  overflow:auto;
+  border:2px solid black;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  z-index:9999;
+">
+
+  <h2>Dogs</h2>
+
+  <p>
+    Dogs are domesticated mammals and are often kept as
+    companions. They come in many different breeds, sizes,
+    and personalities.
+  </p>
+
+  <p>
+    Dogs have an excellent sense of smell and can learn many
+    commands. They are also known for being playful, social,
+    and very good at staring at people while they eat.
+  </p>
+
+  <button onclick="closeDogs()">Close</button>
+
+</div>
+
+           <!-- DUCKS -->
+
+
+           <div class="entry" onclick="showDucks()">
+
+  <h3>Ducks</h3>
+
+  <p>
+    Ducks are waterfowl known for their swimming ability
+    and distinctive quacking sounds.
+  </p>
+
+</div>
+
+<div id="ducksBox" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:30px;
+  width:500px;
+  max-height:70vh;
+  overflow:auto;
+  border:2px solid black;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  z-index:9999;
+">
+
+  <h2>Ducks</h2>
+
+  <p>
+    Ducks are birds that are commonly found near ponds, lakes,
+    rivers, and other bodies of water. Many ducks are excellent
+    swimmers and have webbed feet that help them move through water.
+  </p>
+
+  <p>
+    Ducks communicate using different sounds, including quacks.
+    They also spend a lot of time searching for food and cleaning
+    their feathers. Ducks are completely normal birds.
+  </p>
+
+  <button onclick="closeDucks()">Close</button>
+
+</div>
+
+
+       <!-- =================================================
+            REAL DUCK
+       ================================================= -->
+
+
+       <div id="duckContainer">
+
+
+           <img
+   id="duckImage"
+   src="duck.jpg"
+   alt="Real duck"
+>
+           >
+
+
+       </div>
+
+
+
+
+   </main>
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================================
+    CHAOS PAGE
+===================================================== -->
+
+
+<div id="chaosPage">
+
+  <div class="chaosTitle">
+    CHAOS MODE
+  </div>
+
+  <button onclick="goBackNormal()">BACK</button>
+
+
+
+
+   <div class="chaosTitle">
+<button onclick="goBackNormal()">BACK</button>
+
+       CHAOS MODE
+
+
+   </div>
+
+
+
+   <div class="chaosBox">
+
+
+
+
+       <h2>
+           TYPE SOMETHING
+       </h2>
+
+
+
+
+       <p>
+           Enter something completely normal.
+       </p>
+
+
+
+
+       <input
+           id="chaosInput"
+           type="text"
+           placeholder="Type here..."
+           autocomplete="off"
+       >
+
+
+
+
+       <!--
+       IMPORTANT:
+
+
+       Put your real John Pork image in the same folder
+       as this HTML file.
+
+
+       Name it:
+
+
+       john-pork.jpg
+       -->
+
+
+   <img
+   id="johnPork"
+   src="john-pork.jpeg"
+   alt="John Pork"
+
+
+       >
+<img
+   id="dave"
+   src="dave.png"
+   alt="Minion Dave"
+>
+
+
+   </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================================
+    TINY YELLOW DOT
+===================================================== -->
+
+
+<button id="secretButton"></button>
+
+
+
+
+
+
+<script>
+
+
+/* =====================================================
+  VARIABLES
+===================================================== */
+
+
+let clicks = 0;
+
+
+const button =
+   document.getElementById("secretButton");
+
+
+const duck =
+   document.getElementById("duckImage");
+
+
+const normalPage =
+   document.getElementById("normalPage");
+
+
+const chaosPage =
+   document.getElementById("chaosPage");
+
+
+const chaosInput =
+   document.getElementById("chaosInput");
+
+
+const johnPork =
+   document.getElementById("johnPork");
+
+
+
+
+/* =====================================================
+  YELLOW DOT
+===================================================== */
+
+
+button.addEventListener("click", function() {
+
+
+   clicks++;
+
+
+
+
+   /* -----------------------------------------------
+      FIRST CLICK
+   ------------------------------------------------ */
+
+
+   if (clicks === 1) {
+
+
+       duck.style.display = "block";
+
+
+   }
+
+if (clicks === 3) {
+  startMosquito();
+}
+
+function startMosquito() {
+  const m = document.createElement("img");
+  m.src = "mosquito.png";
+  m.style.position = "fixed";
+  m.style.width = "150px";
+  m.style.zIndex = "99999";
+  document.body.appendChild(m);
+
+  const music = new Audio("Du-bist-gut-genug.mp3");
+  music.play();
+
+  const fly = setInterval(() => {
+    m.style.left = Math.random() * 80 + "vw";
+    m.style.top = Math.random() * 80 + "vh";
+  }, 300);
+
+  setTimeout(() => {
+    clearInterval(fly);
+    m.remove();
+    music.pause();
+  }, 10000);
+}
+
+
+   /* -----------------------------------------------
+      TENTH CLICK
+   ------------------------------------------------ */
+
+
+   if (clicks >= 10) {
+
+
+       normalPage.style.display = "none";
+
+
+       chaosPage.style.display = "block";
+
+
+       button.style.display = "none";
+
+
+       createChaos();
+
+
+       chaosInput.focus();
+
+
+   }
+
+
+});
+
+
+
+
+/* =====================================================
+  RYAN DETECTOR
+===================================================== */
+
+
+chaosInput.addEventListener("input", function() {
+
+
+   const text =
+       chaosInput.value
+       .trim()
+       .toUpperCase();
+
+
+   // RYAN → John Pork
+   if (text === "RYAN") {
+       johnPork.style.display = "block";
+   } else {
+       johnPork.style.display = "none";
+   }
+
+
+   // DAVE → Minion Dave
+   if (text === "DAVE") {
+       document.getElementById("dave").style.display = "block";
+   } else {
+       document.getElementById("dave").style.display = "none";
+   }
+
+
+});
+
+
+
+
+/* =====================================================
+  CHAOS GENERATOR
+===================================================== */
+
+
+function createChaos() {
+
+
+   const things = [
+
+
+       "🐷",
+       "🐔",
+       "🦆",
+       "🍕",
+       "🗿",
+       "💀",
+       "🔥",
+       "🍌",
+       "🐸",
+       "👁️",
+       "🧌",
+       "🦍",
+       "🥔",
+       "🌭",
+       "🤨",
+       "🐟",
+       "🍔",
+       "🚨",
+       "🍗",
+       "😎",
+       "🤯",
+       "💥",
+       "🧀",
+       "👽"
+
+
+   ];
+
+
+
+
+   for (
+       let i = 0;
+       i < 35;
+       i++
+   ) {
+
+
+
+
+       const object =
+           document.createElement("div");
+
+
+
+
+       object.className =
+           "chaosObject";
+
+
+
+
+       object.textContent =
+           things[
+               Math.floor(
+                   Math.random()
+                   * things.length
+               )
+           ];
+
+
+
+
+       object.style.left =
+           Math.random() * 95 + "%";
+
+
+
+
+       object.style.top =
+           Math.random() * 95 + "%";
+
+
+
+
+       object.style.fontSize =
+           (30 + Math.random() * 60)
+           + "px";
+
+
+
+
+       object.style.animationDuration =
+           (0.5 + Math.random() * 2)
+           + "s";
+
+
+
+
+       chaosPage.appendChild(object);
+
+
+   }
+
+
+}
+function showInfo() {
+  document.getElementById("infoBox").style.display = "block";
+}
+
+function closeInfo() {
+  document.getElementById("infoBox").style.display = "none";
+}
+
+function showPikachu() {
+  document.getElementById("pikachuBox").style.display = "block";
+}
+
+function closePikachu() {
+  document.getElementById("pikachuBox").style.display = "none";
+}
+
+function showMinions() {
+  document.getElementById("minionsBox").style.display = "block";
+}
+
+function closeMinions() {
+  document.getElementById("minionsBox").style.display = "none";
+}
+
+function showDogs() {
+  document.getElementById("dogsBox").style.display = "block";
+}
+
+function closeDogs() {
+  document.getElementById("dogsBox").style.display = "none";
+}
+
+function showDucks() {
+  document.getElementById("ducksBox").style.display = "block";
+}
+
+function closeDucks() {
+  document.getElementById("ducksBox").style.display = "none";
+}
+
+
+
+document.getElementById("secretI").onclick = function() {
+
+    document.getElementById("secretSong").play();
+
+    const img = document.getElementById("mandm");
+
+    img.style.display = "block";
+
+    img.animate(
+        [
+            { transform: "translate(-50%, -50%) rotate(0deg)" },
+            { transform: "translate(-50%, -50%) rotate(360deg)" }
+        ],
+        {
+            duration: 1000,
+            easing: "linear"
+        }
+    );
+
+    setTimeout(function() {
+        img.style.display = "none";
+    }, 2000);
+
+};
+    
+function openSettings() {
+  document.getElementById("settingsBox").style.display = "block";
+}
+function checkCode() {
+  if (document.getElementById("secretCode").value === "3.14159") {
+    document.getElementById("settingsBox").style.display = "none";
+    document.getElementById("adminPanel").style.display = "block";
+  }
+}
+function mAndMPage() {
+  document.getElementById("mmPage").style.display = "block";
+
+  const box = document.getElementById("mmImages");
+
+  for (let i = 0; i < 100; i++) {
+    const img = document.createElement("img");
+
+    img.src = "mandm.jpg";
+    img.style.width = "100px";
+    img.style.margin = "10px";
+
+    box.appendChild(img);
+  }
+}
+
+function goBackNormal() {
+  document.getElementById("chaosPage").style.display = "none";
+  document.getElementById("normalPage").style.display = "block";
+
+  document.getElementById("secretButton").style.display = "block";
+}
+
+function closeAdmin() {
+  document.getElementById("adminPanel").style.display = "none";
+}
+
+function closeMM() {
+  document.getElementById("mmPage").style.display = "none";
+  document.getElementById("adminPanel").style.display = "none";
+}
+</script>
+
+<img id="mandm" src="mandm.jpg" alt="M&M meme">
+<audio id="secretSong" src="spiderman-meme-song.mp3"></audio>
+
+<button onclick="openSettings()" style="
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  z-index:99999;
+  padding:10px 20px;
+  font-size:16px;
+">
+  Settings
+</button>
+
+<div id="settingsBox" style="
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:black;
+  color:white;
+  padding:30px;
+  z-index:99999;
+">
+  <h2>Settings</h2>
+  <input id="secretCode" placeholder="Enter code">
+  <button onclick="checkCode()">Enter</button>
+</div>
+<div id="adminPanel" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#111;
+  color:white;
+  z-index:100000;
+  padding:40px;
+">
+  <h1>ADMIN PANEL</h1>
+
+<button onclick="mAndMPage()">DO NOT PRESS</button>
+
+<button onclick="closeAdmin()">BACK</button>
+
+</div>
+<div id="mmPage" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:white;
+  z-index:200000;
+  overflow:auto;
+  text-align:center;
+">
+
+  <h1>YOU PRESSED IT 💀</h1>
+
+  <div id="mmImages"></div>
+
+  <button onclick="closeMM()">GO BACK</button>
+
+</div>
+</body>
+</html>
+
